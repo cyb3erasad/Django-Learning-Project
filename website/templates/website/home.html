@@ -5,5 +5,54 @@ Home Page
 {% endblock %}
 
 {% block content %}
-<h1>All Chai Available </h1>
+<div class="max-w-7xl mx-auto px-4 py-10">
+
+    <!-- Page Heading -->
+    <h1 class="text-4xl font-bold text-center text-gray-800 mb-10">
+        All Chai Available
+    </h1>
+
+    <!-- Chai Grid -->
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+        {% for chai in chais %}
+        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+
+            <!-- Image -->
+            <img 
+                src="{{ chai.image.url }}" 
+                alt="{{ chai.name }}"
+                class="w-full h-56 object-cover"
+            >
+
+            <!-- Card Content -->
+            <div class="p-6">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-2">
+                    {{ chai.name }}
+                </h3>
+
+                <p class="text-lg text-gray-600 mb-4">
+                    ₹ {{ chai.price }}
+                </p>
+
+                <a href="{% url 'chai_details' chai.id %}">
+                    <button
+                        type="button"
+                        class="w-full text-white bg-gradient-to-r from-pink-500 via-pink-600 to-pink-700
+                               hover:from-pink-600 hover:to-pink-800
+                               focus:outline-none focus:ring-4 focus:ring-pink-300
+                               font-medium rounded-lg text-sm px-5 py-3 text-center transition"
+                    >
+                        {{ chai.chai_type }} • ID {{ chai.id }}
+                    </button>
+                </a>
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
 {% endblock %}
+
+
