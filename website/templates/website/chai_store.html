@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+Chai stores comming soon
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit"> Search Store </button>
+</form>
+
+{% if store %}
+<h2> Store Available </h2>
+<ul>
+    {% for st in store %}
+       <li> {{st.name}} - {{st.location}} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
